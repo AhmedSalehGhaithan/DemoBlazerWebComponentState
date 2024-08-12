@@ -1,0 +1,26 @@
+﻿@page "/"
+@inject NavigationManager NavManager
+
+@using DemoBlazerWebComponent.Global_state
+@inject MessageState messageState
+ @rendermode InteractiveServer 
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+<h2>Message Global : @messageState.Message</h2>
+<h2>Message Global2 : @messageState.Message2</h2>
+<input type="text" class="form-control mb-3" @bind-value="messageState.Message" @bind-value:event="oninput" />
+<input type="text" class="form-control mb-3" @bind-value="Message" />
+
+<button @onclick="SettingMessage">Set message</button>
+<button @onclick="ClearingMessage">Clear message</button>
+
+@code{
+    string Message;
+    void SettingMessage(){
+        messageState.Message2 = Message;
+    }
+    void ClearingMessage(){
+        messageState.CleanMessage();
+    }
+}
